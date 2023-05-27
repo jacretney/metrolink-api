@@ -12,12 +12,12 @@ describe('A TfgmClient', () => {
     let apiMock: MockAdapter;
 
     beforeEach(() => {
-        client = new TfgmClient();
+        client = new TfgmClient(axios);
         apiMock = new MockAdapter(axios);
     })
 
     test('should fetch a tram stop', async () => { 
-        apiMock.onGet('https://api.tfgm.com/odata/MetroLinks(12345)').reply(200, metroLinkStopResponse);
+        apiMock.onGet('/MetroLinks(12345)').reply(200, metroLinkStopResponse);
 
         const stop = await client.fetchMetroLinkStopDetails(12345);
 
@@ -26,7 +26,7 @@ describe('A TfgmClient', () => {
     })
 
     test('should fetch all tram stops', async () => { 
-        apiMock.onGet('https://api.tfgm.com/odata/MetroLinks').reply(200, allMetroLinkStopsResponse);
+        apiMock.onGet('/MetroLinks').reply(200, allMetroLinkStopsResponse);
 
         const stops = await client.fetchAllMetroLinkStopDetails();
 

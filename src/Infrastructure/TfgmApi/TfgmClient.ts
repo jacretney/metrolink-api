@@ -1,27 +1,22 @@
-import axios from 'axios';
 import { MetroLinkStop } from './MetroLinkStop';
-
-const baseUrl = 'https://api.tfgm.com/odata';
+import TfgmAxiosClient from './TfgmAxiosClient';
 
 class TfgmClient {
-    async fetchAllMetroLinkStopDetails(): Promise<MetroLinkStop[]> {
-        const { data } = await axios
-            .get(`${baseUrl}/MetroLinks`, {
-                headers: {
+    apiKey: string|undefined;
+    client: typeof TfgmAxiosClient;
 
-                }
-            });
+    constructor(axiosClient: typeof TfgmAxiosClient) {
+        this.client = axiosClient;
+    }
+
+    async fetchAllMetroLinkStopDetails(): Promise<MetroLinkStop[]> {
+        const { data } = await this.client.get(`/MetroLinks`);
 
         return data.value;
     }
 
     async fetchMetroLinkStopDetails(id: number): Promise<MetroLinkStop> {
-        const { data } = await axios
-            .get(`${baseUrl}/MetroLinks(${id})`, {
-                headers: {
-
-                }
-            });
+        const { data } = await this.client.get(`/MetroLinks(${id})`);
 
         return data;
     }
