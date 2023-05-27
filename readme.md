@@ -2,13 +2,13 @@
 
 ## Plan
 
-[X] Fetch Tram Stop data from TFGM API
-[ ] Fetch weather data from an API
-[ ] Purchase PI
-[ ] Assemble PI
-[ ] Deploy code to PI
-[ ] Build a nice UI
-[ ] Find a case and install the PI and screen into it
+- [X] Fetch Tram Stop data from TFGM API
+- [ ] Fetch weather data from an API
+- [ ] Purchase PI
+- [ ] Assemble PI
+- [ ] Deploy code to PI
+- [ ] Build a nice UI
+- [ ] Find a case and install the PI and screen into it
  
 ## Shopping List
 
