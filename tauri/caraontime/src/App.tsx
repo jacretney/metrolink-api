@@ -1,12 +1,10 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
+import TramTimetable from "./components/TramTimetable";
 
 function App() {
   return (
     <div className="app font-dots">
-      <h1>Welcome to Tauri!</h1>
+      <TramTimetable />
     </div>
   );
 }

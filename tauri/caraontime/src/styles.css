@@ -15,4 +15,15 @@ html {
 .font-dots {
   font-family: led;
   color: yellow;
+  font-size: 36px;
+}
+
+.table .row {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px;
+}
+
+.table .row.service-message {
+  margin-top: 16px;
 }
