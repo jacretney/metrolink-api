@@ -24,6 +24,10 @@ html {
   margin: 4px;
 }
 
-.table .row.service-message {
+.mt-4 {
   margin-top: 16px;
+}
+
+.text-center {
+  text-align: center;
 }

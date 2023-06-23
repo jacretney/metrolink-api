@@ -32,8 +32,8 @@ function TramTimetable() {
                 <p>{ response.tram_1_arrival }</p>
             </div>
 
-            <div className="row service-message">
-                <p>{ response.message }</p>
+            <div className="row">
+                <p className="text-center mt-4">{ response.message }</p>
             </div>
         </div>
     )
