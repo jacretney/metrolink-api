@@ -1,26 +1,26 @@
 version: 0.2
 phases:
-    install:
-        runtime-versions:
-           java: corretto8
+  install:
+    runtime-versions:
+      java: corretto8
            
-    build:
-        install:
-          - echo Installing Rust at `date`
-          - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          - source $HOME/.cargo/env
-          - echo Rust installed successfully at `date`
-          - Installing NPM packages at `date`
-          - npm install
-          - echo NPM packages installed successfully at `date`
+  build:
+    install:
+      - echo Installing Rust at `date`
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - source $HOME/.cargo/env
+      - echo Rust installed successfully at `date`
+      - Installing NPM packages at `date`
+      - npm install
+      - echo NPM packages installed successfully at `date`
 
-        commands:
-            - echo Beginning caraontime build at `date`
-            - npm run dev tauri
+  commands:
+    - echo Beginning caraontime build at `date`
+    - npm run dev tauri
             
-        finally:
-            - echo Finished caraontime build at `date`
+  finally:
+    - echo Finished caraontime build at `date`
             
 artifacts:
-    files:
-        - 'target/caraontime'
+  files:
+    - 'target/caraontime'
