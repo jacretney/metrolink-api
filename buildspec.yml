@@ -5,7 +5,7 @@ phases:
       nodejs: 18
 
     commands:
-      - echo yum --showduplicates list libsoup | expand
+      - yum --showduplicates list libsoup | expand
       # - echo Installing Rust at `date`
       # - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       # - source $HOME/.cargo/env
