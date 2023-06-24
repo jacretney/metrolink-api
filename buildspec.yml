@@ -1,6 +1,9 @@
 version: 0.2
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
+
     commands:
       - echo Installing Rust at `date`
       - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
