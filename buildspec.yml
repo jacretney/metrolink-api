@@ -5,9 +5,17 @@ phases:
            java: corretto8
            
     build:
+        install:
+          - echo Installing Rust at `date`
+          - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          - source $HOME/.cargo/env
+          - echo Rust installed successfully at `date`
+          - Installing NPM packages at `date`
+          - npm install
+          - echo NPM packages installed successfully at `date`
+
         commands:
             - echo Beginning caraontime build at `date`
-            - npm install
             - npm run dev tauri
             
         finally:
