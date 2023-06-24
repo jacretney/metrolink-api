@@ -10,7 +10,7 @@ phases:
       - source $HOME/.cargo/env
       - echo Rust installed successfully at `date`
       - echo Installing tauri build deps
-      - yum -y install gtk3-devel libsoup
+      - yum -y install gtk3-devel libsoup2.4
       - echo Installing NPM packages at `date`
       - npm install
       - echo NPM packages installed successfully at `date`
