@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+    install:
+        runtime-versions:
+           java: corretto8
+           
+    build:
+        commands:
+            - echo Beginning caraontime build at `date`
+            - npm install
+            - npm run dev tauri
+            
+        finally:
+            - echo Finished caraontime build at `date`
+            
+artifacts:
+    files:
+        - 'target/caraontime'
