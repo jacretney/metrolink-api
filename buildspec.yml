@@ -14,12 +14,12 @@ phases:
       - npm install
       - echo NPM packages installed successfully at `date`
 
-  commands:
-    - echo Beginning caraontime build at `date`
-    - npm run dev tauri
-            
-  finally:
-    - echo Finished caraontime build at `date`
+    commands:
+      - echo Beginning caraontime build at `date`
+      - npm run dev tauri
+              
+    finally:
+      - echo Finished caraontime build at `date`
             
 artifacts:
   files:
