@@ -16,7 +16,7 @@ phases:
   build:
     commands:
       - echo Beginning caraontime build at `date`
-      - npm run dev tauri
+      - npm run tauri build
               
     finally:
       - echo Finished caraontime build at `date`
