@@ -9,6 +9,8 @@ phases:
       - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - source $HOME/.cargo/env
       - echo Rust installed successfully at `date`
+      - echo Installing tauri build deps
+      - cargo add gdk
       - echo Installing NPM packages at `date`
       - npm install
       - echo NPM packages installed successfully at `date`
