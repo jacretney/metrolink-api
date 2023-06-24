@@ -1,11 +1,7 @@
 version: 0.2
 phases:
   install:
-    runtime-versions:
-      java: corretto8
-           
-  build:
-    install:
+    commands:
       - echo Installing Rust at `date`
       - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - source $HOME/.cargo/env
@@ -14,6 +10,7 @@ phases:
       - npm install
       - echo NPM packages installed successfully at `date`
 
+  build:
     commands:
       - echo Beginning caraontime build at `date`
       - npm run dev tauri
