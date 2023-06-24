@@ -5,20 +5,22 @@ phases:
       nodejs: 18
 
     commands:
-      - echo Installing Rust at `date`
-      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - source $HOME/.cargo/env
-      - echo Rust installed successfully at `date`
-      - echo Installing tauri build deps
-      - yum -y install gtk3-devel libsoup2.4
-      - echo Installing NPM packages at `date`
-      - npm install
-      - echo NPM packages installed successfully at `date`
+      - echo yum --showduplicates list libsoup | expand
+      # - echo Installing Rust at `date`
+      # - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      # - source $HOME/.cargo/env
+      # - echo Rust installed successfully at `date`
+      # - echo Installing tauri build deps
+      
+      # - yum -y install gtk3-devel libsoup
+      # - echo Installing NPM packages at `date`
+      # - npm install
+      # - echo NPM packages installed successfully at `date`
 
   build:
     commands:
       - echo Beginning caraontime build at `date`
-      - npm run tauri build
+      # - npm run tauri build
               
     finally:
       - echo Finished caraontime build at `date`
