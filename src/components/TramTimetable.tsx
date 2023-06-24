@@ -2,6 +2,15 @@ import TfgmClient from "../data/TfgmApi/TfgmClient";
 import TfgmAxiosClient from '../data/TfgmApi/TfgmAxiosClient';
 import { useEffect, useState } from "react";
 
+function getDueTime(status: string, minutes: string): string 
+{
+    if (status === 'Due') {
+        return `${minutes} mins`;
+    }
+
+    return status;
+}
+
 function TramTimetable() {
     const client = new TfgmClient(TfgmAxiosClient);
 
@@ -14,12 +23,12 @@ function TramTimetable() {
     });
 
     const fetchData = () => {
-        client.fetchMetroLinkStopDetails(127967)
+        client.fetchMetroLinkStopDetails(127854) // set this to 127967 when done
             .then(data => setResponse({
                 tram_0_destination : data.Dest0,
-                tram_0_arrival: `${data.Status0} in ${data.Wait0} mins.`,
+                tram_0_arrival: getDueTime(data.Status0, data.Wait0),
                 tram_1_destination : data.Dest1,
-                tram_1_arrival: `${data.Status1} in ${data.Wait1} mins.`,
+                tram_1_arrival: getDueTime(data.Status2, data.Wait1),
                 message: `${data.MessageBoard}`
             }));
     }
