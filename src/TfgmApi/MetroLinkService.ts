@@ -22,19 +22,15 @@ class MetroLinkService {
         }
     }
 
+    /**
+     * This is minging but the API we're dealing with is minging...
+     * @param {MetroLinkStop} response 
+     * @returns 
+     */
     _getTrams(response: MetroLinkStop): Array<Tram> {
-        const tramKeys = ['Dest0', 'Dest1', 'Dest2'];
-        const tramCount = Object.keys(response).reduce((count, key) => {
-            if (tramKeys.includes(key)) {
-                return count + 1;
-            }
-
-            return count;
-        }, 0);
-
         const trams = [];
 
-        if (tramCount > 0) {
+        if (response.Dest0 !== '') {
             trams.push({
                 destination: response.Dest0,
                 carriages: response.Carriages0,
@@ -43,7 +39,7 @@ class MetroLinkService {
             })
         }
 
-        if (tramCount > 1) {
+        if (response.Dest1 !== '') {
             trams.push({
                 destination: response.Dest1,
                 carriages: response.Carriages1,
@@ -52,7 +48,7 @@ class MetroLinkService {
             })
         }
 
-        if (tramCount > 2) {
+        if (response.Dest2 !== '') {
             trams.push({
                 destination: response.Dest2,
                 carriages: response.Carriages2,
