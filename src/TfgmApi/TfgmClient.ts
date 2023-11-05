@@ -1,4 +1,4 @@
-import { MetroLinkStop } from './MetroLinkStop';
+import { MetroLinkStop } from './Types/MetroLinkStop';
 import TfgmAxiosClient from './TfgmAxiosClient';
 
 class TfgmClient {

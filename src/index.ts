@@ -1,21 +1,17 @@
 import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import 'dotenv/config';
+import MetroLinkService from './TfgmApi/MetroLinkService';
 
 const app: Express = express();
 const port = process.env.PORT;
 
-app.get('/', (req: Request, res: Response) => {
-    res.send({
-        data: {
-            tram_0_destination : 'dest0 from api',
-            tram_0_arrival: '1 min',
-            tram_1_destination : 'dest1 from api',
-            tram_1_arrival: '2 mins',
-            message: `it works`,
-        }
-    })
+const metroLinkService = new MetroLinkService();
+
+app.get('/stops/:id', async (req: Request, res: Response) => {
+    const stopId = parseInt(req.params.id);
+    const data = await metroLinkService.getStop(stopId);
+
+    res.send({ data });
 });
 
 app.listen(port, () => {
