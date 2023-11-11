@@ -11,6 +11,26 @@ class MetroLinkService {
         this.client = new TfgmClient(TfgmAxiosClient)
     }
 
+    async search({ name, direction }: { name: string, direction: string }): Promise<TramStop|null> {
+        const stops = await this.client.fetchAllMetroLinkStopDetails();
+
+        const stop = stops.find((stop) => {
+            return stop.StationLocation.toLowerCase() === name.toLowerCase() &&
+                stop.Direction.toLowerCase() === direction.toLowerCase();
+        });
+
+        if (!stop) {
+            return null;
+        }
+
+        return {
+            id: stop.Id,
+            location: stop.StationLocation,
+            message: this._getMessage(stop),
+            trams: this._getTrams(stop),
+        }
+    }
+
     async getStop(id: number): Promise<TramStop> {
         const response = await this.client.fetchMetroLinkStopDetails(id);
 
