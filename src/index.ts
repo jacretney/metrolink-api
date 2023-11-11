@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import 'dotenv/config';
 import MetroLinkService from './TfgmApi/MetroLinkService';
-import { log } from 'console';
+import WeatherService from './Weather/WeatherService';
 
 const app: Express = express();
 const port = process.env.PORT;
@@ -9,6 +9,7 @@ const port = process.env.PORT;
 app.use(express.json());
 
 const metroLinkService = new MetroLinkService();
+const weatherService = new WeatherService();
 
 app.get('/stops/:id', async (req: Request, res: Response) => {
     const stopId = parseInt(req.params.id);
@@ -30,6 +31,12 @@ app.post('/stops/search', async (req: Request, res: Response) => {
     }
 
     res.send({ data });
+});
+
+app.get('/weather', async (req: Request, res: Response) => {
+    const weather = await weatherService.getWeather();
+
+    res.send({ data: weather });
 });
 
 app.listen(port, () => {
