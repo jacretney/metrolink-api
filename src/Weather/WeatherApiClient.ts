@@ -1,5 +1,7 @@
 import WeatherApiAxiosClient from './WeatherApiAxiosClient';
 import {WeatherAPIResponse} from "./Types/WeatherApiResponse";
+import {ForecastResponse} from "./Types/Forecast";
+import {AxiosResponse} from "axios";
 
 class WeatherApiClient {
     client: typeof WeatherApiAxiosClient;
@@ -8,14 +10,14 @@ class WeatherApiClient {
         this.client = axiosClient;
     }
 
-    async fetchWeather(): Promise<WeatherAPIResponse> {
+    async fetchWeather(): Promise<ForecastResponse> {
         const q = 'M4 6LX';
-        const aqi= 'no';
+        const aqi = 'no';
         const apiKey = process.env.WEATHER_API_KEY;
 
-        const { data } = await this.client.get(`/current.json?key=${apiKey}&q=${q}&aqi=${aqi}`);
+        const response = await this.client.get(`/forecast.json?key=${apiKey}&q=${q}&aqi=${aqi}`);
 
-        return data;
+        return response.data;
     }
 }
 

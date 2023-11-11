@@ -34,7 +34,7 @@ app.post('/stops/search', async (req: Request, res: Response) => {
 });
 
 app.get('/weather', async (req: Request, res: Response) => {
-    const weather = await weatherService.getWeather();
+    const weather = await weatherService.getWeather(decodeURIComponent(req.query.date as string));
 
     res.send({ data: weather });
 });
