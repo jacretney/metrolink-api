@@ -11,7 +11,7 @@ class WeatherApiClient {
     }
 
     async fetchWeather(): Promise<ForecastResponse> {
-        const q = 'M4 6LX';
+        const q = 'M15 4NY';
         const aqi = 'no';
         const apiKey = process.env.WEATHER_API_KEY;
 
